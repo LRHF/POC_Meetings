@@ -1,0 +1,111 @@
+﻿@page
+@model POC_Meetings.Pages.Meetings.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+
+
+
+<h3>Meetings</h3>
+
+<form asp-page="./Index" method="get">
+    <p class="float-left">
+        <a class="btn btn-primary" asp-page="Create">Create New</a>
+        <a asp-page="./Index" id="fullList" style="visibility: @(@Model._searchString != null ? "visible" : "hidden")">| Back to full List</a>
+    </p>
+
+    <div class="form-actions no-color float-right">
+        <p>
+            Find Person or Company:
+            <input type="text" name="searchString" id="searchString" />
+            <input type="submit" value="Search" class="btn btn-primary" />
+
+        </p>
+    </div>
+</form>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Meeting[0].ContactName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Meeting[0].CompanyName)
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Meeting[0].Email)
+                </th>*@
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Meeting[0].MobileNumber)
+                </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Meeting[0].MeetingDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Meeting[0].FollowUpDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Meeting[0].FollowUpDone)
+            </th>
+            <th style="width: 300px">
+                @Html.DisplayNameFor(model => model.Meeting[0].MeetingNotes)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Meeting)
+        {
+
+            <tr style="background-color: @(item.FollowUpDone ? "white" : "pink")">
+
+                <td>
+                    <a href="?searchString=@item.ContactName">@item.ContactName</a>
+                </td>
+                <td>
+                    <a href="?searchString=@item.CompanyName">@item.CompanyName</a>
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>*@
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.MobileNumber)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.MeetingDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FollowUpDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FollowUpDone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MeetingNotes)
+                </td>
+                <td>
+                    <a class="btn btn-primary" asp-page="./Edit" asp-route-id="@item.Id">Edit</a>
+                    <a class="btn btn-primary" asp-page="./Details" asp-route-id="@item.Id">Details</a>
+                    <a class="btn btn-danger" asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+@*@section scripts {
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#searchString').on('input', function () {
+                    $('#fullList').css('visibility', $(this).val().length ? 'visible' : 'hidden');
+                });
+            });
+        </script>
+    }*@

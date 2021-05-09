@@ -1,0 +1,68 @@
+﻿@page
+@model POC_Meetings.Pages.Meetings.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Meeting</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Meeting.ContactName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Meeting.ContactName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Meeting.CompanyName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Meeting.CompanyName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Meeting.Email)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Meeting.Email)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Meeting.MobileNumber)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Meeting.MobileNumber)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Meeting.MeetingDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Meeting.MeetingDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Meeting.FollowUpDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Meeting.FollowUpDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Meeting.FollowUpDone)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Meeting.FollowUpDone)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Meeting.MeetingNotes)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Meeting.MeetingNotes)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Meeting.Id">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>
